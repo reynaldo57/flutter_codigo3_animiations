@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   bool flagAnimAlign = true;
+  bool flagAnimContainer = true;
+
 
 
   @override
@@ -34,25 +36,42 @@ class _HomePageState extends State<HomePage> {
             //   },
             //   child: Text("HereWeGo"),
             // )
+            // GestureDetector(
+            //   onTap: (){
+            //     flagAnimAlign = !flagAnimAlign;
+            //     setState(() {
+            //
+            //     });
+            //   },
+            //   child: Container(
+            //     width: 250,
+            //     height: 250,
+            //     color: Colors.greenAccent,
+            //     child: AnimatedAlign(
+            //       duration: Duration(milliseconds: 1500),
+            //       alignment: flagAnimAlign ? Alignment.topRight : Alignment.bottomLeft,
+            //       curve: Curves.bounceOut,
+            //       child: Image.asset("assets/images/goku.jpg", height: 100,),
+            //     ),
+            //   ),
+            // ),
+
             GestureDetector(
               onTap: (){
-                flagAnimAlign = !flagAnimAlign;
                 setState(() {
-
+                  flagAnimContainer = !flagAnimContainer;
                 });
               },
-              child: Container(
-                width: 250,
-                height: 250,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 1400),
+                height: flagAnimContainer ? 200 : 100,
+                width: flagAnimContainer ? 200 : 100,
                 color: Colors.greenAccent,
-                child: AnimatedAlign(
-                  duration: Duration(milliseconds: 1500),
-                  alignment: flagAnimAlign ? Alignment.topRight : Alignment.bottomLeft,
-                  curve: Curves.bounceOut,
-                  child: Image.asset("assets/images/goku.jpg", height: 100,),
-                ),
+                child: FlutterLogo(size: 60,),
+                curve: Curves.bounceOut,
+                alignment: flagAnimContainer ? Alignment.bottomLeft : Alignment.topRight,
               ),
-            ),
+            )
           ],
         ),
       )
