@@ -10,6 +10,7 @@ class _HomePageState extends State<HomePage> {
   bool flagAnimAlign = true;
   bool flagAnimContainer = true;
   bool flagAnimCross = true;
+  double opacityLevel = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -98,21 +99,36 @@ class _HomePageState extends State<HomePage> {
               //   crossFadeState: flagAnimCross ? CrossFadeState.showSecond : CrossFadeState.showFirst,
               // ),
 
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.greenAccent,
-                child: AnimatedDefaultTextStyle(
-                  child: Text("HelloWorld"),
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 20
-                  ),
-                  duration: Duration(seconds: 2),
-                  curve: Curves.easeIn,
-                ),
+              // Container(
+              //   width: 200,
+              //   height: 200,
+              //   color: Colors.greenAccent,
+              //   child: AnimatedDefaultTextStyle(
+              //     child: Text("HelloWorld"),
+              //     style: TextStyle(
+              //       color: Colors.blue,
+              //       fontSize: 20
+              //     ),
+              //     duration: Duration(seconds: 2),
+              //     curve: Curves.easeIn,
+              //   ),
+              // ),
+              // TextButton(onPressed: (){}, child: Text("Change Style!"),),
+
+              AnimatedOpacity(
+                duration: Duration(milliseconds: 1500),
+                opacity: opacityLevel,
+                child: FlutterLogo(size: 600,),
               ),
-              TextButton(onPressed: (){}, child: Text("Change Style!"),),
+              TextButton(
+                onPressed: (){
+                  opacityLevel = opacityLevel == 1.0 ? 0 : 1.0;
+                  setState(() {
+
+                  });
+                },
+                child: Text("Change Opacity"),
+              )
             ],
           ),
         ));
