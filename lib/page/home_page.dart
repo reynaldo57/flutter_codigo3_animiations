@@ -69,34 +69,50 @@ class _HomePageState extends State<HomePage> {
               //   ),
               // )
 
-              AnimatedCrossFade(
-                duration: Duration(seconds: 2),
-                firstChild: GestureDetector(
-                  onTap: (){
-                    flagAnimCross = !flagAnimCross;
-                    setState(() {
+              // AnimatedCrossFade(
+              //   duration: Duration(seconds: 2),
+              //   firstChild: GestureDetector(
+              //     onTap: (){
+              //       flagAnimCross = !flagAnimCross;
+              //       setState(() {
+              //
+              //       });
+              //     },
+              //     child: FlutterLogo(
+              //       size: 100,
+              //       style: FlutterLogoStyle.horizontal,
+              //     ),
+              //   ),
+              //   secondChild: GestureDetector(
+              //     onTap: (){
+              //       flagAnimCross = !flagAnimCross;
+              //       setState(() {
+              //
+              //       });
+              //     },
+              //     child: FlutterLogo(
+              //       size: 100,
+              //       style: FlutterLogoStyle.stacked,
+              //     ),
+              //   ),
+              //   crossFadeState: flagAnimCross ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+              // ),
 
-                    });
-                  },
-                  child: FlutterLogo(
-                    size: 100,
-                    style: FlutterLogoStyle.horizontal,
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.greenAccent,
+                child: AnimatedDefaultTextStyle(
+                  child: Text("HelloWorld"),
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 20
                   ),
+                  duration: Duration(seconds: 2),
+                  curve: Curves.easeIn,
                 ),
-                secondChild: GestureDetector(
-                  onTap: (){
-                    flagAnimCross = !flagAnimCross;
-                    setState(() {
-
-                    });
-                  },
-                  child: FlutterLogo(
-                    size: 100,
-                    style: FlutterLogoStyle.stacked,
-                  ),
-                ),
-                crossFadeState: flagAnimCross ? CrossFadeState.showSecond : CrossFadeState.showFirst,
               ),
+              TextButton(onPressed: (){}, child: Text("Change Style!"),),
             ],
           ),
         ));
