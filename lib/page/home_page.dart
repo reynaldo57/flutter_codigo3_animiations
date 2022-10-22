@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_animations/page/animated_controller_page.dart';
 import 'package:flutter_codigo3_animations/page/hero_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,7 @@ class _HomePageState extends State<HomePage> {
   bool flagAnimContainer = true;
   bool flagAnimCross = true;
   double opacityLevel = 1;
+  bool flagAnimPh = true;
 
   @override
   Widget build(BuildContext context) {
@@ -115,20 +117,70 @@ class _HomePageState extends State<HomePage> {
               // ),
               // TextButton(onPressed: (){}, child: Text("Change Style!"),),
 
-              AnimatedOpacity(
-                duration: Duration(milliseconds: 1500),
-                opacity: opacityLevel,
-                child: FlutterLogo(size: 600,),
-              ),
-              TextButton(
-                onPressed: (){
-                  opacityLevel = opacityLevel == 1.0 ? 0 : 1.0;
-                  setState(() {
+              // AnimatedOpacity(
+              //   duration: Duration(milliseconds: 1500),
+              //   opacity: opacityLevel,
+              //   child: FlutterLogo(size: 600,),
+              // ),
+              // TextButton(
+              //   onPressed: (){
+              //     opacityLevel = opacityLevel == 1.0 ? 0 : 1.0;
+              //     setState(() {
+              //
+              //     });
+              //   },
+              //   child: Text("Change Opacity"),
+              // )
 
-                  });
+              // AnimatedPhysicalModel(
+              //   child: Container(
+              //     height: 150,
+              //     width: 150,
+              //     child: FlutterLogo(size: 50,),
+              //   ),
+              //   shape: BoxShape.rectangle,
+              //   duration: Duration(milliseconds: 1500),
+              //   color: Colors.white,
+              //   elevation:flagAnimPh ? 20 : 0,
+              //   borderRadius: flagAnimPh ? BorderRadius.all(Radius.circular(40.0)) : BorderRadius.all(Radius.circular(0)),
+              //   shadowColor: Colors.black54,
+              // ),
+              // TextButton(
+              //     onPressed: (){
+              //       flagAnimPh = !flagAnimPh;
+              //       setState(() {
+              //
+              //       });
+              //     },
+              //     child: Text("Change!"),),
+
+              SizedBox(
+               width: 200,
+               height: 350,
+               child: Stack(
+                 children: [
+                   Container(
+                     color: Colors.greenAccent,
+                   ),
+                   AnimatedPositioned(
+                     height: 50,
+                     bottom: 100,
+                     curve: Curves.bounceOut,
+                     duration: Duration(milliseconds: 2000),
+                     child: Container(
+                       color: Colors.purple,
+                       child: Text("Push"),
+                     ),
+                   )
+                 ],
+               ),
+              ),
+          TextButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> AnimatedControllerPage()));
                 },
-                child: Text("Change Opacity"),
-              )
+                child: Text("Change!"),),
+
             ],
           ),
         ));
