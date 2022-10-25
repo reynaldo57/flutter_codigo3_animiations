@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo3_animations/page/animated_controller_page.dart';
 import 'package:flutter_codigo3_animations/page/hero_page.dart';
+import 'package:flutter_codigo3_animations/page/tween_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -180,6 +181,12 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> AnimatedControllerPage()));
                 },
                 child: Text("Change!"),),
+
+              TextButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> TweenPage()));
+                },
+                child: Text("Tween!"),),
 
             ],
           ),

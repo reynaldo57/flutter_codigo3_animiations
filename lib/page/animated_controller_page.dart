@@ -10,7 +10,9 @@ class AnimatedControllerPage extends StatefulWidget {
 class _AnimatedControllerPageState extends State<AnimatedControllerPage> with SingleTickerProviderStateMixin {
 
   late AnimationController _colorAnimationController;
+  late AnimationController _turnAnimationController;
   late Animation _colorAnimation;
+  late Animation<double> _turnAnimation;
   bool isFav = false;
   @override
   void initState(){
@@ -37,12 +39,15 @@ class _AnimatedControllerPageState extends State<AnimatedControllerPage> with Si
     //   }
     //   print(status);
     // });
+
+    _turnAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 1200))..repeat(reverse: true);
+    _turnAnimation = CurvedAnimation(parent: _turnAnimationController, curve: Curves.bounceOut);
   }
   @override
   void dispose(){
     // TODO: implement dispose
     super.dispose();
-    _colorAnimationController.dispose();
+    //_colorAnimationController.dispose();
   }
 
 
@@ -70,6 +75,15 @@ class _AnimatedControllerPageState extends State<AnimatedControllerPage> with Si
       //     }
       //   )
       // ),
+      body: Center(
+        child: RotationTransition(
+          turns: _turnAnimation,
+          child: FlutterLogo(
+            size: 100,
+            style: FlutterLogoStyle.horizontal,
+          ),
+        ),
+      )
     );
   }
 }
